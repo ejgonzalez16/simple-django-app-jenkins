@@ -28,4 +28,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY .. .
 
-CMD ["gunicorn", "cool_counters.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "1"]
+RUN python3 cool_counters/manage.py migrate
+
+ENTRYPOINT ["python3", "cool_counters/manage.py", "runserver", "0.0.0.0:8000"]
