@@ -21,9 +21,9 @@ pipeline {
         stage('run-docker') {
             steps {
                 sh'''
-                cp -r . /var/jenkins_home/simple-django-app-jenkins
-                cd /var/jenkins_home
-                sudo docker compose up -d --build django-app
+                cp -r . /code/simple-django-app-jenkins
+                cd /code/
+                sudo docker-compose up -d --no-deps --build django-app
                 '''
             }
         }
